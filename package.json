@@ -1,0 +1,36 @@
+{
+  "name": "node-blog",
+  "version": "1.0.0",
+  "description": "Node/Express Blog API",
+  "main": "./src/index.js",
+  "scripts": {
+    "dev": "nodemon ./src/index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielcoker/node-blog.git"
+  },
+  "keywords": [
+    "blog",
+    "node",
+    "express"
+  ],
+  "author": "Daniel Coker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielcoker/node-blog/issues"
+  },
+  "homepage": "https://github.com/danielcoker/node-blog#readme",
+  "dependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/register": "^7.11.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "nconf": "^0.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
