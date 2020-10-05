@@ -10,4 +10,4 @@ configure({
   },
 });
 
-export const logger = getLogger();
+export default getLogger();
