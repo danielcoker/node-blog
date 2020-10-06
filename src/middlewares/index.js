@@ -5,7 +5,7 @@ import morgan from 'morgan';
 import errorHandler from './errorHandler';
 
 const attachMiddlewares = (app) => {
-  if (nconf.get('NODE_ENV').trim() !== 'testing') app.use(morgan('dev'));
+  if (nconf.get('IS_DEV')) app.use(morgan('dev'));
 
   app.use(express.json());
 
