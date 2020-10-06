@@ -2,6 +2,7 @@ import express from 'express';
 import nconf from 'nconf';
 import morgan from 'morgan';
 
+import appRoutes from './appRoutes';
 import errorHandler from './errorHandler';
 
 const attachMiddlewares = (app) => {
@@ -9,7 +10,9 @@ const attachMiddlewares = (app) => {
 
   app.use(express.json());
 
-  // // Error handler middleware.
+  app.use('/api/v1', appRoutes);
+
+  // Error handler middleware.
   app.use(errorHandler);
 };
 
