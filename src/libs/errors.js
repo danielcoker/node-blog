@@ -24,6 +24,16 @@ export class BadRequest extends CustomError {
   }
 }
 
+export class ValidationError extends BadRequest {
+  constructor(errors) {
+    super();
+
+    this.name = 'BadRequest';
+    this.message = 'Validation failed.';
+    this.errors = errors;
+  }
+}
+
 export class NotFound extends CustomError {
   constructor(customMessage) {
     super();

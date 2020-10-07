@@ -41,6 +41,7 @@ const errorHandler = (err) => {
     success: false,
     error: responseErr.name,
     message: responseErr.message,
+    errors: responseErr.errors ? responseErr.errors : undefined,
   };
 
   return { responseErr, jsonRes };
