@@ -2,7 +2,9 @@ import express from 'express';
 import nconf from 'nconf';
 import morgan from 'morgan';
 
-import appRoutes from './appRoutes';
+import validateBody from './validateBody';
+
+import appRoutes from './appRoutes'; // eslint-disable-line import/no-cycle
 import errorHandler from './errorHandler';
 
 const attachMiddlewares = (app) => {
@@ -15,5 +17,7 @@ const attachMiddlewares = (app) => {
   // Error handler middleware.
   app.use(errorHandler);
 };
+
+export { validateBody };
 
 export default attachMiddlewares;
