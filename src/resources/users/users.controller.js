@@ -5,5 +5,5 @@ import * as UserService from './users.service';
 export const register = asyncHandler(async (req, res) => {
   const user = await UserService.register(req.body);
 
-  res.status(200).json({ message: 'Registration successful.', data: { user } });
+  res.respond(201, user, 'Registration successful.');
 });
