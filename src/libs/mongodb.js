@@ -25,4 +25,5 @@ export const getConnectionUrl = () => {
 export const getDefaultConnectionOptions = () => ({
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useCreateIndex: true,
 });
