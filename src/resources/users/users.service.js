@@ -1,7 +1,8 @@
 import { NotAuthorized } from '../../libs/errors';
 import { model as User } from './model';
 
-import { getUserByEmail } from '../../libs/user';
+import { generateToken, getUserByEmail } from '../../libs/user';
+import { bcryptCompare } from '../../libs/password';
 
 /**
  * Creates a new user.
@@ -23,4 +24,22 @@ export const register = async (data) => {
   await newUser.save();
 
   return newUser;
+};
+
+/**
+ * Login a user with email and password.
+ * @param {Object} data Request data fromt the controller.
+ * @returns {Object} Object containing the logged user token and user object.
+ */
+export const login = async (data) => {
+  const { email, password } = data;
+
+  const user = await getUserByEmail(email);
+  if (!user) throw new NotAuthorized('User with this email does not exist.');
+
+  if (bcryptCompare(password, user.password)) throw new NotAuthorized('Incorrect password');
+
+  const token = generateToken(user.toObject());
+
+  return { ...user.toJSON(), token };
 };
