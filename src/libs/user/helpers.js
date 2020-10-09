@@ -1,4 +1,5 @@
 /* eslint-disable import/prefer-default-export */
+import jwt from 'jsonwebtoken';
 import { model as User } from '../../resources/users/model';
 
 /**
@@ -12,3 +13,13 @@ export const getUserByEmail = async (email) => {
   const user = User.findOne({ email: email.toLowerCase() });
   return user;
 };
+
+/**
+ * Generates the user's api token that must be used to authenticate requests.
+ * @param {Object} payload The information to embed in token.
+ * @returns {String} The token.
+ */
+export const generateToken = (payload) =>
+  jwt.sign(payload, process.env.JSON_WEB_TOKEN_SECRET, {
+    expiresIn: process.env.JSON_WEB_TOKEN_EXPIRE,
+  });
