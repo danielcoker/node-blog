@@ -1,4 +1,4 @@
 import * as UserSchemas from '../users/users.schema';
+import * as PostSchemas from '../posts/posts.schema';
 
-// eslint-disable-next-line import/prefer-default-export
-export { UserSchemas };
+export { UserSchemas, PostSchemas };
