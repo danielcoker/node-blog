@@ -1,4 +1,4 @@
-import { NotFound } from '../../libs/errors';
+import { NotAuthorized, NotFound } from '../../libs/errors';
 import { model as Post } from './model';
 import { getPostById } from '../../libs/post';
 
@@ -20,7 +20,7 @@ export const getPosts = async () => {
 export const getPost = async (postId) => {
   const post = await getPostById(postId, ['user']);
 
-  if (!post) throw new NotFound('This post does not exist.');
+  if (!post) throw new NotFound('Post does not exist.');
 
   return post;
 };
@@ -37,6 +37,28 @@ export const createPost = async (user, data) => {
   const post = new Post({ ...data, user: id });
 
   await (await post.save().then((model) => model.populate('user'))).execPopulate();
+
+  return post;
+};
+
+/**
+ * Updates a post.
+ * @param {String} postId The post ID.
+ * @param {Object} user The authenticated user object.
+ * @param {Object} data Request data from the controller.
+ * @returns {Object} The updated post.
+ */
+export const updatePost = async (postId, user, data) => {
+  const post = await getPostById(postId, ['user']);
+  if (!post) throw new NotFound('Post does not exist.');
+
+  if (!post.user.equals(user.id)) {
+    throw new NotAuthorized('User is not authorized to edit this post.');
+  }
+
+  Object.assign(post, data);
+
+  await post.save();
 
   return post;
 };
