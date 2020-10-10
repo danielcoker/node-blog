@@ -31,7 +31,7 @@ export const getPost = async (postId) => {
  * @param {Object} data Request data from the controller.
  * @returns {Object} The created post.
  */
-export const createPost = async (user = {}, data) => {
+export const createPost = async (user, data) => {
   const { id } = user;
 
   const post = new Post({ ...data, user: id });
