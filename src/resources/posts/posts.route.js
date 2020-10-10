@@ -8,6 +8,7 @@ router.route('/:postId').get(PostController.getPost);
 
 router
   .route('/')
+  .get(PostController.getPosts)
   .post(
     authWithBearerToken(),
     validateBody('PostSchemas', 'postSchema'),
