@@ -1,6 +1,6 @@
 import { NotAuthorized, NotFound } from '../../libs/errors';
 import { model as Post } from './model';
-import { getPostById } from '../../libs/post';
+import { getPostById } from '../../libs/post'; // eslint-disable-line import/no-cycle
 
 /**
  * Get all posts from the database.

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import * as PostController from './posts.controller';
+import * as PostController from './posts.controller'; // eslint-disable-line import/no-cycle
 import { validateBody, authWithBearerToken } from '../../middlewares'; // eslint-disable-line import/no-cycle
 
 const router = Router();

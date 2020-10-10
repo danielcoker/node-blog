@@ -1,4 +1,4 @@
-import { model as Post } from '../../resources/posts';
+import { model as Post } from '../../resources/posts'; // eslint-disable-line import/no-cycle
 
 /**
  * Get a post from the db using the post's ID.

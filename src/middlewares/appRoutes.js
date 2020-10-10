@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 import { userRoutes } from '../resources/users'; // eslint-disable-line import/no-cycle
-import { postRoutes } from '../resources/posts';
+import { postRoutes } from '../resources/posts'; // eslint-disable-line import/no-cycle
 
 const router = Router();
 

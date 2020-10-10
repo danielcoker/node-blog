@@ -1,5 +1,5 @@
 import asyncHandler from '../../libs/asyncHanlder';
-import * as PostService from './posts.service';
+import * as PostService from './posts.service'; // eslint-disable-line import/no-cycle
 
 export const getPosts = asyncHandler(async (req, res) => {
   const posts = await PostService.getPosts();
