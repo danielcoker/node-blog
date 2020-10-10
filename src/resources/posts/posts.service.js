@@ -2,6 +2,10 @@ import { NotFound } from '../../libs/errors';
 import { model as Post } from './model';
 import { getPostById } from '../../libs/post';
 
+/**
+ * Get all posts from the database.
+ * @returns {Array} List of posts from the database.
+ */
 export const getPosts = async () => {
   const posts = await Post.find({}).populate('user').sort('-createdAt');
 
