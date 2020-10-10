@@ -7,9 +7,9 @@ import { model as Post } from './model';
  * @returns {Object} The created post.
  */
 export const createPost = async (user = {}, data) => {
-  // const { id } = user;
+  const { id } = user;
 
-  const post = new Post({ ...data, user: '5f7fea13787f073820478aa0' });
+  const post = new Post({ ...data, user: id });
 
   await (await post.save().then((model) => model.populate('user'))).execPopulate();
 

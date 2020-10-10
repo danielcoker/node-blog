@@ -39,7 +39,7 @@ export const login = async (data) => {
 
   if (bcryptCompare(password, user.password)) throw new NotAuthorized('Incorrect password');
 
-  const token = generateToken(user.toObject());
+  const token = generateToken(user.toJSON());
 
   return { ...user.toJSON(), token };
 };

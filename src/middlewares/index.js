@@ -3,6 +3,7 @@ import nconf from 'nconf';
 import morgan from 'morgan';
 
 import validateBody from './validateBody';
+import { authWithBearerToken } from './auth'; // eslint-disable-line import/no-cycle
 
 import appRoutes from './appRoutes'; // eslint-disable-line import/no-cycle
 import errorHandler from './errorHandler';
@@ -23,6 +24,6 @@ const attachMiddlewares = (app) => {
   app.use(errorHandler);
 };
 
-export { validateBody };
+export { validateBody, authWithBearerToken };
 
 export default attachMiddlewares;
