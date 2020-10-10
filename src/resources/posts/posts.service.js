@@ -2,6 +2,12 @@ import { NotFound } from '../../libs/errors';
 import { model as Post } from './model';
 import { getPostById } from '../../libs/post';
 
+export const getPosts = async () => {
+  const posts = await Post.find({}).populate('user').sort('-createdAt');
+
+  return posts;
+};
+
 /**
  * Get a single post by the post ID.
  * @param {String} postId The ID of the post to get.
