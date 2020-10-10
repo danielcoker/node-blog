@@ -7,7 +7,8 @@ const router = Router();
 router
   .route('/:postId')
   .get(PostController.getPost)
-  .put(authWithBearerToken(), validateBody('PostSchemas', 'postSchema'), PostController.updatePost);
+  .put(authWithBearerToken(), validateBody('PostSchemas', 'postSchema'), PostController.updatePost)
+  .delete(authWithBearerToken(), PostController.deletePost);
 
 router
   .route('/')

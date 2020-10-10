@@ -62,3 +62,16 @@ export const updatePost = async (postId, user, data) => {
 
   return post;
 };
+
+export const deletePost = async (user, postId) => {
+  const post = await getPostById(postId);
+  if (!post) throw new NotFound('Post does not exist.');
+
+  if (!post.user.equals(user.id)) {
+    throw new NotAuthorized('User is not authorized to delete this post.');
+  }
+
+  await post.deleteOne();
+
+  return true;
+};
