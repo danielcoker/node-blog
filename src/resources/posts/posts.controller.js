@@ -26,3 +26,10 @@ export const updatePost = asyncHandler(async (req, res) => {
 
   res.respond(200, { post }, 'Post updated successfully.');
 });
+
+export const deletePost = asyncHandler(async (req, res) => {
+  const { postId } = req.params;
+  await PostService.deletePost(req.user, postId);
+
+  res.respond(204, {});
+});
