@@ -20,11 +20,11 @@ const errorHandler = (err) => {
     const model = err.message.split(' ')[0];
 
     responseErr = new BadRequest(`${model} validation failed.`);
-    responseErr.errors = err.map((mongooseErr) => ({
-      message: mongooseErr.message,
-      path: mongooseErr.path,
-      value: mongooseErr.value,
-    }));
+    responseErr.errors = {
+      message: err.message,
+      path: err.path,
+      value: err.value,
+    };
   }
 
   if (!responseErr || responseErr.httpCode >= 500 || responseErr.httpCode === undefined) {
