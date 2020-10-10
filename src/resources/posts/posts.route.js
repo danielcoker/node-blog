@@ -4,6 +4,8 @@ import { validateBody, authWithBearerToken } from '../../middlewares'; // eslint
 
 const router = Router();
 
+router.route('/:postId').get(PostController.getPost);
+
 router
   .route('/')
   .post(
