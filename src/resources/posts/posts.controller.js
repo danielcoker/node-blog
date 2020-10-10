@@ -19,3 +19,10 @@ export const createPost = asyncHandler(async (req, res) => {
 
   res.respond(201, { post }, 'Post created successfully.');
 });
+
+export const updatePost = asyncHandler(async (req, res) => {
+  const { postId } = req.params;
+  const post = await PostService.updatePost(postId, req.user, req.body);
+
+  res.respond(200, { post }, 'Post updated successfully.');
+});
