@@ -2,8 +2,7 @@
   "env": {
     "es2021": true,
     "node": true,
-    "mocha": true,
-    "chai": true
+    "mocha": true
   },
   "extends": ["airbnb-base"],
   "parserOptions": {
@@ -12,6 +11,7 @@
   },
   "rules": {
     "no-param-reassign": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "no-underscore-dangle": "off"
   }
 }
