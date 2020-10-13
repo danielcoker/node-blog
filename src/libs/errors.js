@@ -29,7 +29,7 @@ export class ValidationError extends BadRequest {
     super();
 
     this.name = 'BadRequest';
-    this.message = 'Validation failed.';
+    this.message = 'Invalid request parameters.';
     this.errors = errors;
   }
 }
