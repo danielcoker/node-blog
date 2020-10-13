@@ -4,7 +4,7 @@ import * as UserService from './users.service';
 export const register = asyncHandler(async (req, res) => {
   const user = await UserService.register(req.body);
 
-  res.respond(201, user, 'Registration successful.');
+  res.respond(201, { user }, 'Registration successful.');
 });
 
 export const login = asyncHandler(async (req, res) => {
