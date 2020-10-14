@@ -23,7 +23,9 @@ export const register = async (data) => {
 
   await newUser.save();
 
-  return newUser;
+  const token = generateToken(newUser.toJSON());
+
+  return { ...newUser.toJSON(), token };
 };
 
 /**
@@ -37,7 +39,7 @@ export const login = async (data) => {
   const user = await getUserByEmail(email);
   if (!user) throw new NotAuthorized('User with this email does not exist.');
 
-  if (bcryptCompare(password, user.password)) throw new NotAuthorized('Incorrect password');
+  if (!bcryptCompare(password, user.password)) throw new NotAuthorized('Incorrect password.');
 
   const token = generateToken(user.toJSON());
 

@@ -23,5 +23,5 @@ export const bcryptCompare = (textPassword, hashedPassword) => {
     throw new Error('textPassword and hashedPassword are required paramters.');
   }
 
-  bcrypt.compareSync(textPassword, hashedPassword);
+  return bcrypt.compareSync(textPassword, hashedPassword);
 };
